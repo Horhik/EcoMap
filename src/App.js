@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { YMaps, Map, Circle } from "react-yandex-maps";
 import StarterPage from "./component/Start";
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import YMap from "./component/maps/map";
 
 const App = () => {
@@ -15,9 +14,7 @@ const App = () => {
   //   setMapData(data)
   // }, []);
   return (
-
-      <BrowserRouter>
-
+      <Router>
   <Switch>
     <Route path={'/districts'}>
       <YMap/>
@@ -26,7 +23,7 @@ const App = () => {
       <StarterPage/>
     </Route>
   </Switch>
-  </BrowserRouter>
+      </Router>
   );
 };
 export default App;

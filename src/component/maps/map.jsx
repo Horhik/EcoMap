@@ -1,36 +1,48 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {YMaps, Map, Polygon} from "react-yandex-maps";
+import {YMaps, Map, Polygon, Placemark} from "react-yandex-maps";
 const YMap = (props) => {
     const [mapData, setMapData] = useState([])
-    const [fillColor, setFillColor] = useState('#00FF00');
+    const [hoveredIndex, setHoveredIndex] = useState(Number);
+    const [poly, setPoly] = useState({coord: [55.76, 37.64] , show: false});
     useEffect(async () => {
-        const fetching = await fetch('https://eco-map.herokuapp.com/districts')
+        const fetching = await fetch('https://eco-map.herokuapp.com/districts');
         const data = await fetching.json();
         setMapData(data)
+        console.log(data)
 
     }, [])
+
+    const showInfo = (coord) => {
+        setPoly({coord: coord, show: true})
+        alert(coord)
+    }
     return(
         <div>
             <YMaps>
               <Map
                 className={"map"}
-                defaultState={{ center: [55.76, 37.64], zoom: 10 }}
+                defaultState={{ center: poly.coord,  zoom: 10 }}
               >
+                  {/*{placemarks.map(mark => {*/}
+                  {/*    return (*/}
+                  {/*        <Placemark*/}
+                  {/*            geometry={mark.geo_data.coordinates}/>*/}
+                  {/*    )*/}
+                  {/*})}*/}
+
                   {mapData.map((area, index) => {
-                        console.log(index)
                       return(
                       <Polygon
                           key={index}
-                          onMouseOver={() => setFillColor('#0f0')}
-                          onHover={() => setFillColor('#f00')}
+                              onClick={() => setPoly({coord: area.geo_data.coordinates[0][0]})}
+                          onHover={() => {setHoveredIndex(index)}}
                           geometry={area.geo_data.coordinates}
                           options={{
-                              fillColor: fillColor,
-                              strokeColor: '#0000FF',
-                              opacity: 0.5,
-                              strokeWidth: 5,
-                              strokeStyle: 'shortdash',
+                              fillColor: 'rgb(64,175, 79)',
+                              strokeColor: '#20Ae4e',
+                              opacity: index === hoveredIndex? 0.7: 0.5,
+                              strokeWidth: 4,
                           }}
                       />
                       )
