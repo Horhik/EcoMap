@@ -3,4 +3,42 @@ body{
   padding: 0;
 }
 
+.button{
+  padding: 12px 24px;
+  text-align: center;
+  background: $main-color;
+  border-radius: 35px;
+  color: $color-on-dark;
+  font-size: $button-font-size;
+  font-weight: 600;
+  border: 0;
+  transition: 0.5s;
+  &:hover, &:focus{
+    outline: none;
+    background-image: darken($main-color, 10%);
+    opacity: 0.8;
+
+  }
+
+
+
+}
+
+h1{
+
+  font-family: $main-font;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 52px;
+  text-align: center;
+  color: $color-on-dark;
+
+
+}
+
+.logo{
+
+}
+
+@import 'StartgerPage';
 @import 'maps/maps';

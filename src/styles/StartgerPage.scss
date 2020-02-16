@@ -1,0 +1,19 @@
+.starter-page{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  background-image: $beauty-background;
+  height: 100vh;
+  &__button{
+
+  }
+  &__h1{
+
+  }
+  &__logo{
+    width: 200px;
+    height: 200px;
+  }
+}
