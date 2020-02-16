@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 const Logo = props => {
     return (
@@ -8,7 +8,7 @@ const Logo = props => {
 
              width={213}
         style={{
-            transform: `scalce(${props.status == 'main' ? 1 : 0.5 })`
+            transform: `scalce(${props.status === 'main' ? 1 : 0.5 })`
         }}>
             <circle cx={106.5} cy={106.5} r={106.5} fill="#285065"/>
             <path

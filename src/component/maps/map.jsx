@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {YMaps, Map, Polygon, Placemark} from "react-yandex-maps";
-const YMap = (props) => {
+import {YMaps, Map, Polygon} from "react-yandex-maps";
+const YMap = () => {
     const [mapData, setMapData] = useState([])
     const [hoveredIndex, setHoveredIndex] = useState(Number);
     const [poly, setPoly] = useState({coord: [55.76, 37.64] , show: false});
@@ -13,10 +13,6 @@ const YMap = (props) => {
 
     }, [])
 
-    const showInfo = (coord) => {
-        setPoly({coord: coord, show: true})
-        alert(coord)
-    }
     return(
         <div>
             <YMaps>
@@ -24,12 +20,6 @@ const YMap = (props) => {
                 className={"map"}
                 defaultState={{ center: poly.coord,  zoom: 10 }}
               >
-                  {/*{placemarks.map(mark => {*/}
-                  {/*    return (*/}
-                  {/*        <Placemark*/}
-                  {/*            geometry={mark.geo_data.coordinates}/>*/}
-                  {/*    )*/}
-                  {/*})}*/}
 
                   {mapData.map((area, index) => {
                       return(
@@ -47,10 +37,8 @@ const YMap = (props) => {
                       />
                       )
                   })}
-
               </Map>
             </YMaps>
-
             </div>
     )
 }
