@@ -9,6 +9,7 @@ const YMap = () => {
         const fetching = await fetch('https://eco-map.herokuapp.com/districts');
         const data = await fetching.json();
         setMapData(data)
+        alert('loaded', data)
         console.log(data)
 
     }, [])
